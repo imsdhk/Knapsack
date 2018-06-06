@@ -102,19 +102,20 @@ const greedyAlgo = (items, capacity) => {
     let result = [];
     let loaded = 0;
 
-    while (items.length) {
+    while (items.length) {// O(n)
         let current = items.shift()
         if (loaded + current.size > capacity) continue;
         loaded += current.size;
         result.push(current)
-        console.log(loaded, capacity, current)
+        if(loaded >= capacity) break;
+        // console.log(loaded, capacity, current)
     };
     let selectedItems = [];
     let totalSize = 0;
     let totalValue = 0;
 
 
-    for (let obj of result) {
+    for (let obj of result) {//O(n)
         selectedItems.push(obj.index);
         totalSize += obj.size;
         totalValue += obj.value;
